@@ -11,8 +11,11 @@ func printHello() {
 
 	wg.Add(1)
 	go func() {
+
 		defer wg.Done()
+
 		fmt.Println("Hello from goroutine!")
+
 	}()
 
 	wg.Wait()

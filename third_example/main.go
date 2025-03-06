@@ -9,7 +9,9 @@ func createGorutines(num int) <-chan int {
 	ch := make(chan int)
 
 	go func() {
+
 		defer close(ch)
+
 		for i := 1; i <= num; i++ {
 			ch <- i
 		}
@@ -25,7 +27,9 @@ func main() {
 	channel := createGorutines(number)
 	sum := 0
 	for val := range channel {
+
 		sum += val
+
 	}
 	fmt.Printf("Sum = %d\n", sum)
 }
